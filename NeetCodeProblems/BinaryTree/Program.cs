@@ -15,52 +15,52 @@
             BTPrinter.Printer(root);
             BTPrinter.Printer(InvertBinaryTree.InvertedTree(root));
         }
-        public class BTNode
-        {
-            public int Value { get; set; }
-            public BTNode? Left { get; set; }
-            public BTNode? Right { get; set; }
+    }
+    public class BTNode
+    {
+        public int Value { get; set; }
+        public BTNode? Left { get; set; }
+        public BTNode? Right { get; set; }
 
-            public BTNode(int value = 0, BTNode? left = null, BTNode? right = null)
-            {
-                Value = value;
-                Left = left;
-                Right = right;
-            }
+        public BTNode(int value = 0, BTNode? left = null, BTNode? right = null)
+        {
+            Value = value;
+            Left = left;
+            Right = right;
         }
+    }
 
-        public static class InvertBinaryTree
+    public static class InvertBinaryTree
+    {
+        public static BTNode InvertedTree(BTNode root)
         {
-            public static BTNode InvertedTree(BTNode root)
+            if (root == null)
             {
-                if (root == null)
-                {
-                    return null;
-                }
-                BTNode tempNode = new();
-                tempNode = root.Left;
-                root.Left = root.Right;
-                root.Right = tempNode;
-                InvertedTree(root.Left);
-                InvertedTree(root.Right);
-                return root;
+                return null;
             }
+            BTNode tempNode = new();
+            tempNode = root.Left;
+            root.Left = root.Right;
+            root.Right = tempNode;
+            InvertedTree(root.Left);
+            InvertedTree(root.Right);
+            return root;
         }
+    }
 
-        public static class BTPrinter
+    public static class BTPrinter
+    {
+
+        public static void Printer(BTNode root)
         {
-
-            public static void Printer(BTNode root)
+            Console.Write(root.Value + ", ");
+            if (root.Left != null)
             {
-                Console.Write(root.Value + ", ");
-                if (root.Left != null)
-                {
-                    Printer(root.Left);
-                }
-                if (root.Right != null)
-                {
-                    Printer(root.Right);
-                }
+                Printer(root.Left);
+            }
+            if (root.Right != null)
+            {
+                Printer(root.Right);
             }
         }
     }
