@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
-            string input = "(()({}{[]))";
+            string input = "";
             Console.WriteLine(Solution.IsValid(input));
         }
     }
