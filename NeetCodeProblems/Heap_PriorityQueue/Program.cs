@@ -10,35 +10,34 @@
             int stone = StoneMethods.Smashem(stones);
             Console.WriteLine(stone);
         }
-
-        public static class StoneMethods
+    }
+    public static class StoneMethods
+    {
+        public static int Smashem(int[] stones)
         {
-            public static int Smashem(int[] stones)
+            PriorityQueue<int, int> heap = new();
+            foreach (int i in stones)
             {
-                PriorityQueue<int, int> heap = new();
-                foreach (int i in stones)
-                {
-                    heap.Enqueue(i, -i);
-                }
+                heap.Enqueue(i, -i);
+            }
 
-                while (heap.Count > 1)
-                {
-                    int rock1 = heap.Dequeue();
-                    int rock2 = heap.Dequeue();
+            while (heap.Count > 1)
+            {
+                int rock1 = heap.Dequeue();
+                int rock2 = heap.Dequeue();
 
-                    if ((rock1 - rock2) != 0)
-                    {
-                        heap.Enqueue((rock1 - rock2), -(rock1 - rock2));
-                    }
-                }
-                if (heap.Count == 0)
+                if ((rock1 - rock2) != 0)
                 {
-                    return 0;
+                    heap.Enqueue((rock1 - rock2), -(rock1 - rock2));
                 }
-                else
-                {
-                    return heap.Dequeue();
-                }
+            }
+            if (heap.Count == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return heap.Dequeue();
             }
         }
     }
