@@ -32,6 +32,29 @@
                     return false;
                 
                 return result;
+
+                //if (s.Length == t.Length)
+                //{
+                //    char[] sArr = s.OrderBy(c => c).ToArray();
+                //    char[] tArr = t.OrderBy(c => c).ToArray();
+                //    int i = 0;
+                //    foreach (char c in sArr)
+                //    {
+                //        if (sArr[i] != tArr[i])
+                //        {
+                //            return false;
+                //            break;
+                //        }
+                //        i++;
+                //    }
+                //    return true;
+
+                //}
+
+                //else
+                //{
+                //    return false;
+                //}
             }
         }
     }
