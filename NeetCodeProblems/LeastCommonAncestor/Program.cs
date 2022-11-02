@@ -13,24 +13,18 @@
             root.left.right.right = new TreeNode(5);
             root.right.left = new TreeNode(7);
             root.right.right = new TreeNode(9);
-            Console.WriteLine(LowestCommonAncestor(root, root.left.left, root.left.right.right).val);
+            Console.WriteLine(AncestorFinder(root, root.left.left, root.left.right.right).val);
         }
 
-        public static TreeNode LowestCommonAncestor(TreeNode root, TreeNode first, TreeNode second)
-        {
-            TreeNode lowestAncestor = AncestorFinder(root, first, second);
-            return lowestAncestor;
-        }
 
         public static TreeNode AncestorFinder(TreeNode root, TreeNode first, TreeNode second)
         {
-            TreeNode ancestor = new TreeNode(0);
-            if ((first.val <= root.val && second.val >= root.val) || (first.val >= root.val && second.val <= root.val))
-            {
-                ancestor = root;
-                return ancestor;
-            }
-            else if (root.val >= first.val && root.val >= second.val)
+            
+            //if ((first.val <= root.val && second.val >= root.val) || (first.val >= root.val && second.val <= root.val))
+            //{
+            //    return root;
+            //}
+            /*else*/ if (root.val >= first.val && root.val >= second.val)
             {
                 return AncestorFinder(root.left, first, second);
             }
@@ -38,7 +32,7 @@
             {
                 return AncestorFinder(root.right, first, second);
             }
-            return ancestor;
+            return root;
         }
     }
 
